@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36811.4
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheFillingStation", "TheFillingStation.csproj", "{8010E3BE-D184-45C7-9631-E7F0FBA48DAB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8010E3BE-D184-45C7-9631-E7F0FBA48DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8010E3BE-D184-45C7-9631-E7F0FBA48DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8010E3BE-D184-45C7-9631-E7F0FBA48DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8010E3BE-D184-45C7-9631-E7F0FBA48DAB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {32BFC26C-C2BF-4BEB-8F41-A229EE831426}
+	EndGlobalSection
+EndGlobal

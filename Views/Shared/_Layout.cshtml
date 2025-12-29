@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - The Filling Station</title>
+    <link rel="icon" type="image/png" href="~/images/logo.png">
+    <link rel="apple-touch-icon" href="~/images/logo.png">
+
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <!-- ADD navbar-dark HERE -->
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand d-flex align-items-center gap-2"
+                   asp-controller="Home"
+                   asp-action="Index">
+
+                    <img src="~/images/logo.png"
+                         alt="The Filling Station"
+                         class="brand-logo" />
+
+                    <span class="brand-name d-none d-sm-inline">
+                        The Filling Station
+                    </span>
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNav"
+                        aria-controls="mainNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    <ul class="navbar-nav ms-auto gap-lg-2">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Menu">Menu</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Events">Events</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Gallery">Gallery</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="Laundromat">Laundromat</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                    </ul>
+
+                    <div class="ms-lg-3 mt-3 mt-lg-0 d-flex gap-2">
+                        <a class="btn btn-fs-outline"
+                           asp-controller="Home"
+                           asp-action="Menu">
+                            View Menu
+                        </a>
+
+                        <a class="btn btn-fs"
+                           asp-controller="Home"
+                           asp-action="Events">
+                            What’s On
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main role="main" class="site-main">
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between gap-3">
+                <div>
+                    <div class="footer-title">The Filling Station</div>
+                    <div class="footer-sub">Food • Drinks • Games • Good times</div>
+                </div>
+
+                <div class="text-md-end">
+                    <div class="footer-sub">© @DateTime.Now.Year The Filling Station</div>
+                    <div class="footer-sub">
+                        Built by
+                        <a href="https://www.codebycollins.com"
+                           target="_blank"
+                           rel="noopener"
+                           class="footer-accent text-decoration-none">
+                            CodeByCollins
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

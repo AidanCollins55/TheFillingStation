@@ -1,0 +1,635 @@
+﻿/* =========================
+   The Filling Station - Base Theme
+   ========================= */
+
+/* Design Tokens */
+:root {
+    --bg: #0b0f14;
+    --panel: rgba(255,255,255,0.06);
+    --panel-2: rgba(255,255,255,0.10);
+    --border: rgba(255,255,255,0.14);
+    --ink: rgba(255,255,255,0.92);
+    --muted: rgba(255,255,255,0.70);
+    --brand: #22c55e; /* green */
+    --brand-2: #f59e0b; /* amber */
+    --shadow: 0 10px 30px rgba(0,0,0,0.35);
+    --radius: 18px;
+}
+
+/* Base */
+html, body {
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(900px 500px at 20% 0%, rgba(34,197,94,0.18), transparent 55%), radial-gradient(900px 500px at 80% 0%, rgba(245,158,11,0.14), transparent 55%), var(--bg);
+    color: var(--ink);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Consistent page padding */
+.container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Keep links theme-neutral */
+a, a:hover {
+    color: inherit;
+}
+
+/* Make Bootstrap muted text match theme */
+.text-muted {
+    color: var(--muted) !important;
+}
+
+/* Nice accessible focus ring */
+:focus-visible {
+    outline: 2px solid rgba(34,197,94,0.55);
+    outline-offset: 3px;
+    border-radius: 10px;
+}
+
+/* =========================
+   Header / Nav
+   ========================= */
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 1030;
+    backdrop-filter: blur(12px);
+    background: rgba(11,15,20,0.65);
+    border-bottom: 1px solid var(--border);
+}
+
+.navbar .navbar-brand {
+    text-decoration: none;
+}
+
+.brand-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(34,197,94,0.35), rgba(245,158,11,0.25));
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+
+.brand-name {
+    font-weight: 800;
+    letter-spacing: 0.2px;
+}
+
+.navbar-nav .nav-link {
+    color: var(--muted);
+    border-radius: 12px;
+    padding: 0.5rem 0.75rem;
+    transition: transform 150ms ease, background 150ms ease, color 150ms ease, border-color 150ms ease, filter 150ms ease;
+}
+
+    .navbar-nav .nav-link:hover {
+        color: var(--ink);
+        background: rgba(255,255,255,0.06);
+        transform: translateY(-1px);
+    }
+
+    /* Active nav link (add aria-current="page" or .active for the current page) */
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link[aria-current="page"] {
+        color: var(--ink);
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+    }
+
+.site-main {
+    min-height: calc(100vh - 160px);
+    padding: 2rem 0;
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
+/* Make Bootstrap buttons fit theme too */
+.btn {
+    border-radius: 14px;
+    font-weight: 700;
+    transition: transform 150ms ease, filter 150ms ease, background 150ms ease, border-color 150ms ease, opacity 150ms ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Your custom buttons */
+.btn-fs {
+    border: 1px solid rgba(34,197,94,0.45);
+    background: linear-gradient(135deg, rgba(34,197,94,0.85), rgba(34,197,94,0.55));
+    color: #07110b;
+    font-weight: 700;
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    transition: transform 150ms ease, filter 150ms ease, background 150ms ease, border-color 150ms ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+    .btn-fs:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        color: #07110b;
+    }
+
+.btn-fs-outline {
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.04);
+    color: var(--ink);
+    font-weight: 700;
+    border-radius: 14px;
+    transition: transform 150ms ease, background 150ms ease, filter 150ms ease, border-color 150ms ease;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+    .btn-fs-outline:hover {
+        transform: translateY(-1px);
+        background: rgba(255,255,255,0.08);
+        color: var(--ink);
+    }
+
+/* Bootstrap variants you use */
+.btn-dark {
+    background: rgba(255,255,255,0.10);
+    border: 1px solid rgba(255,255,255,0.16);
+    color: var(--ink);
+}
+
+    .btn-dark:hover {
+        background: rgba(255,255,255,0.14);
+        border-color: rgba(255,255,255,0.22);
+        color: var(--ink);
+    }
+
+.btn-outline-dark {
+    border-color: rgba(255,255,255,0.22);
+    color: var(--ink);
+}
+
+    .btn-outline-dark:hover {
+        background: rgba(255,255,255,0.08);
+        border-color: rgba(255,255,255,0.26);
+        color: var(--ink);
+    }
+
+/* =========================
+   Sections / Cards
+   ========================= */
+.section {
+    padding: 2.25rem 0;
+}
+
+.section-title {
+    font-size: clamp(1.5rem, 2.3vw, 2.2rem);
+    font-weight: 900;
+    letter-spacing: 0.2px;
+}
+
+.section-sub {
+    color: var(--muted);
+    max-width: 60ch;
+}
+
+.card-fs {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+    .card-fs:hover {
+        border-color: rgba(255,255,255,0.22);
+    }
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: var(--ink);
+}
+
+.pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.05);
+    color: var(--muted);
+    transition: transform 150ms ease, filter 150ms ease, background 150ms ease, border-color 150ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* =========================
+   Footer
+   ========================= */
+.site-footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 0;
+    background: rgba(0,0,0,0.25);
+}
+
+.footer-title {
+    font-weight: 900;
+    letter-spacing: 0.2px;
+}
+
+.footer-sub {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.footer-accent {
+    color: rgba(34,197,94,0.95);
+    font-weight: 800;
+}
+
+/* =========================
+   Brand logo
+   ========================= */
+.brand-logo {
+    height: 72px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 6px 16px rgba(0,0,0,0.55));
+}
+
+.navbar-brand:hover .brand-logo {
+    filter: drop-shadow(0 6px 14px rgba(34,197,94,0.55));
+}
+
+.site-header .navbar {
+    min-height: 92px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+}
+
+@media (max-width: 576px) {
+    .brand-logo {
+        height: 58px;
+    }
+}
+
+.navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
+    line-height: 1;
+}
+
+/* ==============================
+   About page - themed cards
+   ============================== */
+.about-page .about-card {
+    background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(245,158,11,0.10));
+    border: 1px solid rgba(255,255,255,0.14) !important;
+    border-radius: 16px;
+}
+
+    .about-page .about-card .text-muted {
+        color: rgba(255,255,255,0.78) !important;
+    }
+
+.about-page .about-soft {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: var(--ink);
+}
+
+    .about-page .about-soft .text-muted {
+        color: rgba(255,255,255,0.75) !important;
+    }
+
+/* =========================
+   Menu page
+   ========================= */
+.menu-page .menu-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.menu-page .menu-card {
+    overflow: hidden;
+    border-radius: 14px;
+    transition: transform 150ms ease, filter 150ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.menu-page .menu-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.menu-page .menu-card:hover {
+    transform: translateY(-2px);
+    transition: transform 120ms ease;
+}
+
+/* Kitchen hours highlight */
+.menu-page .menu-hours {
+    background: linear-gradient(135deg, rgba(34,197,94,0.15), rgba(245,158,11,0.10));
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+    .menu-page .menu-hours .fw-semibold {
+        font-size: 1.1rem;
+        letter-spacing: 0.3px;
+    }
+
+    .menu-page .menu-hours .text-muted {
+        color: rgba(255,255,255,0.85) !important;
+    }
+
+    .menu-page .menu-hours .small {
+        color: rgba(255,255,255,0.65);
+    }
+
+/* Print-friendly menu */
+@media print {
+    body * {
+        visibility: hidden !important;
+    }
+
+    .menu-page, .menu-page * {
+        visibility: visible !important;
+    }
+
+        .menu-page .btn,
+        .menu-page .menu-link,
+        .menu-page .text-muted.small,
+        .menu-page a[href] {
+            display: none !important;
+        }
+
+        .menu-page .card {
+            box-shadow: none !important;
+            border: 0 !important;
+        }
+
+        .menu-page .row.g-3 > * {
+            width: 100% !important;
+        }
+
+        .menu-page img.menu-img {
+            max-width: 100% !important;
+            height: auto !important;
+            page-break-inside: avoid;
+        }
+
+        .menu-page .col-12.col-lg-6:nth-child(1) {
+            page-break-after: always;
+        }
+}
+
+/* =========================
+   Gallery page
+   ========================= */
+.gallery-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.gallery-tile {
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    transition: transform 150ms ease, filter 150ms ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+    .gallery-tile img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+        transition: transform 180ms ease, filter 180ms ease;
+    }
+
+    .gallery-tile:hover img {
+        transform: scale(1.03);
+        filter: brightness(1.05);
+    }
+
+/* =========================
+   Laundromat page
+   ========================= */
+.laundry-page .laundry-card {
+    background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(245,158,11,0.10)) !important;
+    border: 1px solid rgba(255,255,255,0.14) !important;
+    border-radius: 16px;
+}
+
+    .laundry-page .laundry-card .text-muted {
+        color: rgba(255,255,255,0.78) !important;
+    }
+
+.laundry-page .laundry-soft {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    color: var(--ink);
+}
+
+    .laundry-page .laundry-soft .text-muted {
+        color: rgba(255,255,255,0.75) !important;
+    }
+
+.laundry-page .laundry-pill {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.18);
+    color: rgba(255,255,255,0.85);
+    font-weight: 700;
+    gap: 0.4rem;
+}
+
+    .laundry-page .laundry-pill span {
+        letter-spacing: 0.2px;
+    }
+
+/* =========================
+   Events page
+   ========================= */
+.events-page .events-featured {
+    background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(245,158,11,0.10));
+}
+
+.events-page .events-pill {
+    border-color: rgba(34,197,94,0.45);
+    color: rgba(255,255,255,0.85);
+    background: rgba(34,197,94,0.12);
+}
+
+.events-page .events-pill-alt {
+    border-color: rgba(245,158,11,0.45);
+    color: rgba(255,255,255,0.85);
+    background: rgba(245,158,11,0.10);
+}
+
+.events-page .events-month {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 900;
+    letter-spacing: 0.2px;
+    color: rgba(255,255,255,0.92);
+    opacity: 0.9;
+}
+
+.events-page .events-item {
+    display: flex;
+    gap: 1rem;
+    padding: 0.85rem 0;
+    border-top: 1px solid rgba(255,255,255,0.10);
+}
+
+    .events-page .events-item:first-child {
+        border-top: 0;
+    }
+
+.events-page .events-date {
+    width: 64px;
+    flex: 0 0 64px;
+    text-align: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255,255,255,0.14);
+    background: rgba(255,255,255,0.05);
+    padding: 0.5rem 0.25rem;
+}
+
+.events-page .events-day {
+    font-size: 1.25rem;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+.events-page .events-dow {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.70);
+}
+
+.events-page .events-title {
+    font-weight: 900;
+    letter-spacing: 0.2px;
+}
+
+.events-page .events-summary {
+    margin-top: 0.25rem;
+    max-width: 70ch;
+}
+
+/* =========================
+   Mobile navbar hamburger: FORCE WHITE LINES
+   ========================= */
+.navbar-toggler {
+    border: 1px solid rgba(255,255,255,0.25);
+}
+
+.site-header .navbar {
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.95)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler-icon {
+    background-image: var(--bs-navbar-toggler-icon-bg) !important;
+    filter: none !important;
+}
+
+/* =========================
+   MOBILE TAP FEEDBACK
+   ========================= */
+@media (hover: none) and (pointer: coarse) {
+    .btn:active {
+        transform: translateY(1px) scale(0.98) !important;
+        filter: brightness(1.12) !important;
+        opacity: 0.98;
+    }
+
+    .btn-fs:active,
+    .btn-fs-outline:active {
+        transform: translateY(1px) scale(0.98) !important;
+        filter: brightness(1.12) !important;
+    }
+
+    .navbar-nav .nav-link:active {
+        background: rgba(255,255,255,0.10) !important;
+        transform: scale(0.98) !important;
+        filter: brightness(1.10) !important;
+    }
+
+    .menu-page .menu-card:active,
+    .gallery-tile:active {
+        transform: scale(0.98) !important;
+        filter: brightness(1.08) !important;
+    }
+
+    .pill:active {
+        transform: scale(0.98) !important;
+        filter: brightness(1.10) !important;
+    }
+}
+
+/* =========================
+   Home page CTA buttons → brand green (HARDENED)
+   Works whether the CTAs are .btn links OR plain links
+   ========================= */
+
+/* 1) If your CTAs are actual buttons/btn links */
+.home-page a.btn,
+.home-page .btn {
+    border: 1px solid rgba(34,197,94,0.45) !important;
+    background: linear-gradient(135deg, rgba(34,197,94,0.85), rgba(34,197,94,0.55)) !important;
+    color: #07110b !important;
+    box-shadow: var(--shadow);
+}
+
+/* 2) If your CTAs are plain links, add class="home-cta" to them */
+.home-page a.home-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.55rem 0.95rem;
+    border-radius: 14px;
+    font-weight: 800;
+    text-decoration: none;
+    border: 1px solid rgba(34,197,94,0.45) !important;
+    background: linear-gradient(135deg, rgba(34,197,94,0.85), rgba(34,197,94,0.55)) !important;
+    color: #07110b !important;
+    box-shadow: var(--shadow);
+}
+
+    /* Desktop hover */
+    .home-page a.btn:hover,
+    .home-page .btn:hover,
+    .home-page a.home-cta:hover {
+        transform: translateY(-1px);
+        filter: brightness(1.05);
+        color: #07110b !important;
+    }
+
+    /* Mobile tap */
+    .home-page a.btn:active,
+    .home-page .btn:active,
+    .home-page a.home-cta:active {
+        transform: translateY(1px) scale(0.98);
+        filter: brightness(1.10);
+    }

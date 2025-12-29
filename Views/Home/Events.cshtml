@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Events";
+
+    // Edit events here anytime (no DB/admin needed).
+    // Tip: Add more events as you go — keep Date accurate and it will sort automatically.
+    var eventsList = new List<(DateTime Date, string Title, string Time, string Summary, string Badge)>
+    {
+        (new DateTime(2025, 12, 31), "New Year’s Eve Party", "9:00 PM – 12:00 AM", "Ring in the New Year at The Filling Station. Music, drinks, and a midnight countdown.", "Featured"),
+
+        // Examples you can keep or delete:
+        //(new DateTime(2026, 2, 9), "Super Bowl Watch Party", "5:00 PM – Close", "Game on, specials running, and plenty of seating.", "Watch Party"),
+        //(new DateTime(2026, 3, 17), "St. Patrick’s Day Specials", "All Day", "Green drinks + featured specials.", "Specials"),
+    };
+
+    var ordered = eventsList.OrderBy(e => e.Date).ToList();
+    var upcoming = ordered.FirstOrDefault(e => e.Date.Date >= DateTime.Today);
+}
+
+<div class="container py-5 events-page">
+    <div class="text-center mb-4">
+        <h1 class="display-6 fw-bold mb-2">Events</h1>
+        <p class="text-muted mb-0">What’s happening this year at The Filling Station.</p>
+    </div>
+
+    @* Featured Upcoming *@
+    @if (upcoming != default)
+    {
+        <div class="card-fs p-4 p-md-5 mb-4 events-featured">
+            <div class="d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span class="pill events-pill">Upcoming</span>
+                @if (!string.IsNullOrWhiteSpace(upcoming.Badge))
+                {
+                    <span class="pill events-pill-alt">@upcoming.Badge</span>
+                }
+            </div>
+
+            <h2 class="h3 fw-bold mb-1">@upcoming.Title</h2>
+
+            <div class="text-muted mb-3">
+                <strong>@upcoming.Date.ToString("dddd, MMMM d, yyyy")</strong>
+                <span class="mx-2">•</span>
+                @upcoming.Time
+            </div>
+
+            <p class="mb-0">@upcoming.Summary</p>
+        </div>
+    }
+
+    @* Timeline List *@
+    <div class="card-fs p-3 p-md-4">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-3">
+            <div class="fw-semibold">All Events</div>
+            <div class="text-muted small">Updated as new events are announced.</div>
+        </div>
+
+        @{
+            string currentMonth = "";
+        }
+
+        <div class="events-list">
+            @foreach (var e in ordered)
+            {
+                var monthLabel = e.Date.ToString("MMMM yyyy");
+                if (monthLabel != currentMonth)
+                {
+                    currentMonth = monthLabel;
+                    <div class="events-month">@currentMonth</div>
+                }
+
+                <div class="events-item">
+                    <div class="events-date">
+                        <div class="events-day">@e.Date.ToString("dd")</div>
+                        <div class="events-dow">@e.Date.ToString("ddd")</div>
+                    </div>
+
+                    <div class="events-body">
+                        <div class="d-flex flex-wrap align-items-center gap-2">
+                            <div class="events-title">@e.Title</div>
+                            @if (!string.IsNullOrWhiteSpace(e.Badge))
+                            {
+                                <span class="pill events-pill-alt">@e.Badge</span>
+                            }
+                        </div>
+
+                        <div class="text-muted small">
+                            @e.Date.ToString("MMMM d, yyyy") • @e.Time
+                        </div>
+
+                        <div class="events-summary text-muted">
+                            @e.Summary
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

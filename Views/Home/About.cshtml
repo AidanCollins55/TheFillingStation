@@ -1,0 +1,108 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+<div class="about-page container py-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-9 col-xl-8">
+
+            <div class="mb-4 text-center">
+                <h1 class="display-6 fw-bold mb-2">About The Filling Station</h1>
+                <p class="lead mb-0">
+                    A laid-back spot for food, drinks, and good times — plus a convenient laundromat on-site.
+                </p>
+            </div>
+
+            <div class="card border-0 shadow-sm about-card mb-4">
+                <div class="card-body p-4 p-md-5">
+                    <h2 class="h4 fw-semibold mb-3">Who we are</h2>
+                    <p class="mb-3">
+                        The Filling Station is your local place to grab a bite, enjoy a cold drink, and hang out with friends.
+                        We keep it simple: friendly service, a comfortable atmosphere, and a menu made for real life.
+                    </p>
+                    <p class="mb-0">
+                        Whether you’re here for lunch, stopping by after work, or getting laundry done while you eat —
+                        we’re glad you’re here.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-4">
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm about-card">
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-semibold mb-2">Food & Drinks</h3>
+                            <p class="mb-0">
+                                Classic favorites, rotating specials, and a relaxed bar vibe — built for locals.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card h-100 border-0 shadow-sm about-card">
+                        <div class="card-body p-4">
+                            <h3 class="h5 fw-semibold mb-2">Laundromat Convenience</h3>
+                            <p class="mb-0">
+                                Take care of laundry without wasting your day — wash, dry, and grab a meal while you wait.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-0 shadow-sm about-card">
+                <div class="card-body p-4 p-md-5">
+                    <h2 class="h4 fw-semibold mb-3">Visit us</h2>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-3 about-soft h-100">
+                                <div class="fw-semibold mb-1">Hours</div>
+
+                                <div class="small">
+                                    <div><strong>Bar</strong></div>
+                                    <div class="text-muted mb-2">
+                                        Monday – Sunday<br />
+                                        10:00 AM – 12:00 AM
+                                    </div>
+
+                                    <div><strong>Kitchen</strong></div>
+                                    <div class="text-muted">
+                                        Wednesday – Monday<br />
+                                        3:00 PM – 9:00 PM
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="p-3 rounded-3 about-soft h-100">
+                                <div class="fw-semibold mb-1">Location</div>
+
+                                <div class="small mb-3">
+                                    3189 MT-83<br />
+                                    Seeley Lake, MT 59868
+                                </div>
+
+                                <a class="btn btn-outline-dark btn-sm"
+                                   href="https://www.google.com/maps/search/?api=1&query=3189+MT-83,+Seeley+Lake,+MT+59868"
+                                   target="_blank"
+                                   rel="noopener">
+                                    Get Directions
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 d-flex flex-wrap gap-2">
+                        <a class="btn btn-dark" asp-controller="Home" asp-action="Menu">View Menu</a>
+                        <a class="btn btn-outline-dark" asp-controller="Home" asp-action="Events">See Events</a>
+                        <a class="btn btn-outline-dark" asp-controller="Home" asp-action="Laundromat">Laundromat Info</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
