@@ -1,0 +1,68 @@
+name: Build and deploy ASP.NET Core app to Azure Web App - TheFillingStationMT
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  SOLUTION_FILE: TheFillingStation.sln
+  PUBLISH_DIR: ${{ github.workspace }}/publish
+
+jobs:
+  build:
+    runs-on: windows-latest
+    permissions:
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore
+        run: dotnet restore ${{ env.SOLUTION_FILE }}
+
+      - name: Build
+        run: dotnet build ${{ env.SOLUTION_FILE }} --configuration Release --no-restore
+
+      - name: Publish
+        run: dotnet publish ${{ env.SOLUTION_FILE }} --configuration Release --no-build --output "${{ env.PUBLISH_DIR }}"
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: ${{ env.PUBLISH_DIR }}
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: .
+
+      - name: Login to Azure
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_AD80BA56F1E64980AC6B3068EF486B4D }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_66A9B159AB1D47148F17482B7E4FFE4F }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_9B58B60C0B9348C492E413F4AAB5019A }}
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: TheFillingStationMT
+          slot-name: Production
+          package: .
